@@ -4,11 +4,13 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.web.libraryJsp.models.Book;
 import br.com.web.libraryJsp.repositories.BookRepository;
 import br.com.web.libraryJsp.services.BookService;
 
+@Service
 public class BookServiceImpl implements BookService {
 
 	@Autowired
