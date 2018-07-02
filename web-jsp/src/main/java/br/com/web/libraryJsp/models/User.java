@@ -13,7 +13,13 @@ import javax.persistence.ManyToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 @Entity(name = "users")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 
 	@Id
@@ -25,8 +31,10 @@ public class User {
 	@Column(unique = true)
 	private String email;
 
+	@JsonProperty(access = Access.READ_ONLY)
 	private String token;
 	
+	@JsonIgnore
 	private String passwordDigest;
 
 	@DateTimeFormat
@@ -36,12 +44,15 @@ public class User {
 	private List<Role> roles;
 
 	@DateTimeFormat
+	@JsonProperty(access = Access.READ_ONLY)
 	private Calendar createdAt;
 
 	@DateTimeFormat
+	@JsonProperty(access = Access.READ_ONLY)
 	private Calendar updatedAt;
 
 	@DateTimeFormat
+	@JsonProperty(access = Access.READ_ONLY)
 	private Calendar deletedAt;
 
 	// GETTERS AND SETTERS
@@ -128,7 +139,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", birthday=" + birthday + ", roles=" + roles
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", birthday=" + birthday.getTimeInMillis() + ", roles=" + roles
 				+ "]";
 	}
 
