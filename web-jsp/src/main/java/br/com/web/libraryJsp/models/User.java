@@ -25,6 +25,8 @@ public class User {
 	@Column(unique = true)
 	private String email;
 
+	private String token;
+	
 	private String passwordDigest;
 
 	@DateTimeFormat
@@ -66,6 +68,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getToken() {
+		return token;
+	}
+	
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public String getPasswordDigest() {
