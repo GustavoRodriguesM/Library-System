@@ -1,5 +1,6 @@
 package br.com.web.libraryJsp.models;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity(name = "books")
 public class Book {
@@ -29,8 +32,17 @@ public class Book {
 
 	@ManyToMany
 	private List<Category> categories;
-	
-	//GETTERS AND SETTERS
+
+	@DateTimeFormat
+	private Calendar createdAt;
+
+	@DateTimeFormat
+	private Calendar updatedAt;
+
+	@DateTimeFormat
+	private Calendar deletedAt;
+
+	// GETTERS AND SETTERS
 
 	public Long getId() {
 		return id;
@@ -79,6 +91,29 @@ public class Book {
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
-	
+
+	public Calendar getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Calendar createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Calendar getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Calendar updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public Calendar getDeletedAt() {
+		return deletedAt;
+	}
+
+	public void setDeletedAt(Calendar deletedAt) {
+		this.deletedAt = deletedAt;
+	}
 
 }

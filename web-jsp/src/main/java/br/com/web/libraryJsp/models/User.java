@@ -33,6 +33,15 @@ public class User {
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Role> roles;
 
+	@DateTimeFormat
+	private Calendar createdAt;
+
+	@DateTimeFormat
+	private Calendar updatedAt;
+
+	@DateTimeFormat
+	private Calendar deletedAt;
+
 	// GETTERS AND SETTERS
 
 	public Long getId() {
@@ -81,6 +90,30 @@ public class User {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Calendar getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Calendar createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Calendar getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Calendar updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public Calendar getDeletedAt() {
+		return deletedAt;
+	}
+
+	public void setDeletedAt(Calendar deletedAt) {
+		this.deletedAt = deletedAt;
 	}
 
 	@Override

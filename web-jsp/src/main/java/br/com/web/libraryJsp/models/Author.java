@@ -18,8 +18,17 @@ public class Author {
 
 	@DateTimeFormat
 	private Calendar birthday;
-	
-	//GETTERS AND SETTERS
+
+	@DateTimeFormat
+	private Calendar createdAt;
+
+	@DateTimeFormat
+	private Calendar updatedAt;
+
+	@DateTimeFormat
+	private Calendar deletedAt;
+
+	// GETTERS AND SETTERS
 
 	public Long getId() {
 		return id;
@@ -51,6 +60,30 @@ public class Author {
 
 	public void setBirthday(Calendar birthday) {
 		this.birthday = birthday;
+	}
+
+	public Calendar getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Calendar createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Calendar getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Calendar updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public Calendar getDeletedAt() {
+		return deletedAt;
+	}
+
+	public void setDeletedAt(Calendar deletedAt) {
+		this.deletedAt = deletedAt;
 	}
 
 }
