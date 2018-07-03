@@ -143,4 +143,8 @@ public class User {
 				+ "]";
 	}
 
+	public boolean isDeleted() {
+		return deletedAt != null;
+	}
+
 }
