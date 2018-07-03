@@ -2,7 +2,7 @@ package br.com.web.libraryJsp.services;
 
 import java.util.List;
 
-public interface AbstractService<T, ID> {
+public interface DefaultService<T, ID> {
 	
 	T save (T arg);
 	
