@@ -17,18 +17,14 @@ public class BookServiceImpl implements BookService {
 	private BookRepository bookRepository;
 
 	@Override
-	public Book save(Book book) {
+	public void save(Book book) {
 		book.setCreatedAt(Calendar.getInstance());
 		book.setUpdatedAt(Calendar.getInstance());
-
-		return this.bookRepository.save(book);
 	}
 
 	@Override
-	public Book update(Book book) {
+	public void update(Book book) {
 		book.setUpdatedAt(Calendar.getInstance());
-
-		return this.bookRepository.save(book);
 	}
 
 	@Override

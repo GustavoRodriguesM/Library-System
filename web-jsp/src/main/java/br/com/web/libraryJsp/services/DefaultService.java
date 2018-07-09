@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface DefaultService<T, ID> {
 	
-	T save (T arg);
+	void save (T arg);
 	
-	T update(T arg);
+	void update(T arg);
 	
 	T findById(ID id);
 	

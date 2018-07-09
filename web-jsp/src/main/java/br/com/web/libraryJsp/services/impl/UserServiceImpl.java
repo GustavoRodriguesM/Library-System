@@ -17,18 +17,15 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 
 	@Override
-	public User save(User user) {
+	public void save(User user) {
 		user.setCreatedAt(Calendar.getInstance());
 		user.setUpdatedAt(Calendar.getInstance());
 		
-		return this.userRepository.save(user);
 	}
 
 	@Override
-	public User update(User user) {
+	public void update(User user) {
 		user.setUpdatedAt(Calendar.getInstance());
-		
-		return this.userRepository.save(user);
 	}
 
 	@Override
