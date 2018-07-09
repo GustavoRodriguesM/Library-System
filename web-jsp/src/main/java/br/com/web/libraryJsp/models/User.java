@@ -60,6 +60,16 @@ public class User {
 
 	// GETTERS AND SETTERS
 
+	public User() {
+	}
+
+	public User(User user) {
+		this.name = user.getName();
+		this.email = user.getEmail();
+		this.roles = user.getRoles();
+		this.passwordDigest = user.getPasswordDigest();
+	}
+
 	public Long getId() {
 		return id;
 	}

@@ -3,9 +3,13 @@ package br.com.web.libraryJsp.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name = "roles")
-public class Role {
+import org.springframework.security.core.GrantedAuthority;
 
+@Entity(name = "roles")
+public class Role implements GrantedAuthority {
+
+	private static final long serialVersionUID = -9182242770709653671L;
+	
 	@Id
 	private String name;
 
@@ -22,6 +26,11 @@ public class Role {
 	
 	@Override
 	public String toString() {
+		return this.name;
+	}
+
+	@Override
+	public String getAuthority() {
 		return this.name;
 	}
 }
