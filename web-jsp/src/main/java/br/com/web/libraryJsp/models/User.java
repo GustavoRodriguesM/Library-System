@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity(name = "users")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class User {
 
 	@Id
@@ -33,7 +33,10 @@ public class User {
 
 	@JsonProperty(access = Access.READ_ONLY)
 	private String token;
-	
+
+	private String passwordUncoded;
+	private String passwordUncodedConfirmation;
+
 	@JsonIgnore
 	private String passwordDigest;
 
@@ -80,11 +83,11 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getToken() {
 		return token;
 	}
-	
+
 	public void setToken(String token) {
 		this.token = token;
 	}
@@ -137,12 +140,29 @@ public class User {
 		this.deletedAt = deletedAt;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", birthday=" + birthday.getTimeInMillis() + ", roles=" + roles
-				+ "]";
+	public String getPasswordUncoded() {
+		return passwordUncoded;
 	}
 
+	public void setPasswordUncoded(String passwordUncoded) {
+		this.passwordUncoded = passwordUncoded;
+	}
+
+	public String getPasswordUncodedConfirmation() {
+		return passwordUncodedConfirmation;
+	}
+
+	public void setPasswordUncodedConfirmation(String passwordUncodedConfirmation) {
+		this.passwordUncodedConfirmation = passwordUncodedConfirmation;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", birthday=" + birthday.getTimeInMillis()
+				+ ", roles=" + roles + "]";
+	}
+
+	@JsonIgnore
 	public boolean isDeleted() {
 		return deletedAt != null;
 	}
