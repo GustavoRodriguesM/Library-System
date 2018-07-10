@@ -18,8 +18,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity(name = "users")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+@Getter
+@Setter
+@NoArgsConstructor
 public class User {
 
 	@Id
@@ -58,112 +65,11 @@ public class User {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Calendar deletedAt;
 
-	// GETTERS AND SETTERS
-
-	public User() {
-	}
-
 	public User(User user) {
 		this.name = user.getName();
 		this.email = user.getEmail();
 		this.roles = user.getRoles();
 		this.passwordDigest = user.getPasswordDigest();
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
-	public String getPasswordDigest() {
-		return passwordDigest;
-	}
-
-	public void setPasswordDigest(String passwordDigest) {
-		this.passwordDigest = passwordDigest;
-	}
-
-	public Calendar getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Calendar birthday) {
-		this.birthday = birthday;
-	}
-
-	public List<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
-
-	public Calendar getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Calendar createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Calendar getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Calendar updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	public Calendar getDeletedAt() {
-		return deletedAt;
-	}
-
-	public void setDeletedAt(Calendar deletedAt) {
-		this.deletedAt = deletedAt;
-	}
-
-	public String getPasswordUncoded() {
-		return passwordUncoded;
-	}
-
-	public void setPasswordUncoded(String passwordUncoded) {
-		this.passwordUncoded = passwordUncoded;
-	}
-
-	public String getPasswordUncodedConfirmation() {
-		return passwordUncodedConfirmation;
-	}
-
-	public void setPasswordUncodedConfirmation(String passwordUncodedConfirmation) {
-		this.passwordUncodedConfirmation = passwordUncodedConfirmation;
 	}
 
 	@Override

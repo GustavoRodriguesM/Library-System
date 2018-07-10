@@ -7,7 +7,14 @@ import javax.persistence.Id;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity(name = "authors")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Author {
 
 	@Id
@@ -27,63 +34,5 @@ public class Author {
 
 	@DateTimeFormat
 	private Calendar deletedAt;
-
-	// GETTERS AND SETTERS
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Calendar getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Calendar birthday) {
-		this.birthday = birthday;
-	}
-
-	public Calendar getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Calendar createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Calendar getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Calendar updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	public Calendar getDeletedAt() {
-		return deletedAt;
-	}
-
-	public void setDeletedAt(Calendar deletedAt) {
-		this.deletedAt = deletedAt;
-	}
 
 }

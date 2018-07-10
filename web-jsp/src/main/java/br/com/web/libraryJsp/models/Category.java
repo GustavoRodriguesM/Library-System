@@ -7,7 +7,14 @@ import javax.persistence.Id;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity(name = "categories")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Category {
 
 	@Id
@@ -21,37 +28,5 @@ public class Category {
 
 	@DateTimeFormat
 	private Calendar deletedAt;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Calendar getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Calendar createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Calendar getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Calendar updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	public Calendar getDeletedAt() {
-		return deletedAt;
-	}
-
-	public void setDeletedAt(Calendar deletedAt) {
-		this.deletedAt = deletedAt;
-	}
 
 }
