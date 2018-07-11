@@ -19,16 +19,16 @@ public class BeforeCreateUserValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "field.required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "field.required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "passwordUncoded", "field.required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "passwordUncodedConfirmation", "field.required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "field.required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "passwordConfirmation", "field.required");
 
 		User user = (User) target;
 
-		if (user.getPasswordUncoded() != null && user.getPasswordUncodedConfirmation() != null) {
-			if (user.getPasswordUncoded().length() < 7)
-				errors.rejectValue("passwordUncoded", "min.length");
-			else if (!user.getPasswordUncodedConfirmation().equals(user.getPasswordUncoded()))
-				errors.rejectValue("passwordUncodedConfirmation", "not.equals.password");
+		if (user.getPassword() != null && user.getPasswordConfirmation() != null) {
+			if (user.getPassword().length() < 7)
+				errors.rejectValue("password", "min.length");
+			else if (!user.getPasswordConfirmation().equals(user.getPassword()))
+				errors.rejectValue("passwordConfirmation", "not.equals.password");
 		}
 	}
 }
