@@ -29,7 +29,7 @@ public class Book {
 
 	private String title;
 
-	@Column(length = 5000)
+	@Column(columnDefinition="text")
 	private String description;
 
 	private String cover;

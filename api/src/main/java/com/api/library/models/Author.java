@@ -2,6 +2,7 @@ package com.api.library.models;
 
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -21,6 +22,8 @@ public class Author {
 	private Long id;
 
 	private String name;
+	
+	@Column(columnDefinition="text")
 	private String description;
 
 	@DateTimeFormat
