@@ -43,7 +43,10 @@ public class User {
 	@JsonProperty(access = Access.READ_ONLY)
 	private String token;
 
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private transient String password;
+
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private transient String passwordConfirmation;
 
 	@JsonIgnore
