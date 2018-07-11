@@ -4,15 +4,20 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.api.library.models.User;
 import com.api.library.resources.UserRepository;
 import com.api.library.services.UserService;
+import com.api.library.utils.HashGenerator;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+
+	@Autowired
+	private PasswordEncoder encoder;
+
 	@Autowired
 	private UserRepository userRepository;
 
@@ -20,7 +25,10 @@ public class UserServiceImpl implements UserService {
 	public void save(User user) {
 		user.setCreatedAt(Calendar.getInstance());
 		user.setUpdatedAt(Calendar.getInstance());
-		
+
+		user.setToken(HashGenerator.md5(user.getEmail() + user.getName().hashCode()));
+		user.setPasswordDigest(encoder.encode(user.getPassword()));
+
 	}
 
 	@Override
