@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -41,13 +43,13 @@ public class User {
 	@JsonProperty(access = Access.READ_ONLY)
 	private String token;
 
-	private String passwordUncoded;
-	private String passwordUncodedConfirmation;
+	private transient String password;
+	private transient String passwordConfirmation;
 
 	@JsonIgnore
 	private String passwordDigest;
 
-	@DateTimeFormat
+	@Temporal(TemporalType.DATE)
 	private Calendar birthday;
 
 	@ManyToMany(fetch = FetchType.EAGER)
