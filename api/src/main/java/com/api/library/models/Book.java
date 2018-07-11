@@ -33,6 +33,10 @@ public class Book {
 	private String description;
 
 	private String cover;
+	
+	private Integer units;
+	
+	private String isbn;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Author> authors;
