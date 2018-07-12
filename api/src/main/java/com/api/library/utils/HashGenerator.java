@@ -4,12 +4,9 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import org.springframework.stereotype.Component;
-
-
 public class HashGenerator {
 
-	public static String md5(String senha) {
+	public static String md5(String string) {
 		String code = "";
 		MessageDigest md = null;
 		try {
@@ -17,7 +14,7 @@ public class HashGenerator {
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
-		BigInteger hash = new BigInteger(1, md.digest(senha.getBytes()));
+		BigInteger hash = new BigInteger(1, md.digest(string.getBytes()));
 		code = hash.toString(16);
 		return code;
 	}
