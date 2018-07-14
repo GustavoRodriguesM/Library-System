@@ -8,6 +8,9 @@ import javax.persistence.Id;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,12 +33,15 @@ public class Author {
 	private Calendar birthday;
 
 	@DateTimeFormat
+	@JsonProperty(access = Access.READ_ONLY)
 	private Calendar createdAt;
 
 	@DateTimeFormat
+	@JsonProperty(access = Access.READ_ONLY)
 	private Calendar updatedAt;
 
 	@DateTimeFormat
+	@JsonProperty(access = Access.READ_ONLY)
 	private Calendar deletedAt;
 
 }

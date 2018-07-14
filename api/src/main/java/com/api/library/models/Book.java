@@ -13,6 +13,9 @@ import javax.persistence.ManyToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -45,12 +48,15 @@ public class Book {
 	private List<Category> categories;
 
 	@DateTimeFormat
+	@JsonProperty(access = Access.READ_ONLY)
 	private Calendar createdAt;
 
 	@DateTimeFormat
+	@JsonProperty(access = Access.READ_ONLY)
 	private Calendar updatedAt;
 
 	@DateTimeFormat
+	@JsonProperty(access = Access.READ_ONLY)
 	private Calendar deletedAt;
 
 }
