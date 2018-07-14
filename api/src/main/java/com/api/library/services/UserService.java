@@ -7,5 +7,7 @@ public interface UserService extends DefaultService<User, Long> {
 	User findByEmail(String email);
 
 	User findByToken(String token);
+	
+	void encodePasswordAndToken(User user);
 
 }

@@ -26,13 +26,13 @@ public class UserServiceImpl implements UserService {
 		user.setCreatedAt(Calendar.getInstance());
 		user.setUpdatedAt(Calendar.getInstance());
 
-		user.setToken(HashGenerator.md5(user.getEmail() + user.getName().hashCode()));
-		user.setPasswordDigest(encoder.encode(user.getPassword()));
+		encodePasswordAndToken(user);
 
 	}
 
 	@Override
 	public void update(User user) {
+		encodePasswordAndToken(user);
 		user.setUpdatedAt(Calendar.getInstance());
 	}
 
@@ -71,6 +71,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findByToken(String token) {
 		return this.userRepository.findByToken(token);
+	}
+	
+	@Override
+	public void encodePasswordAndToken(User user) {
+		user.setToken(HashGenerator.md5(user.getEmail() + user.getName().hashCode()));
+		user.setPasswordDigest(encoder.encode(user.getPassword()));
 	}
 
 }
