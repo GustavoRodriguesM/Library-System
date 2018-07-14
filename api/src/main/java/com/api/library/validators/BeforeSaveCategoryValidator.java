@@ -9,8 +9,8 @@ import org.springframework.validation.Validator;
 import com.api.library.models.Category;
 import com.api.library.services.CategoryService;
 
-@Component("beforeCreateCategoryValidator")
-public class BeforeCreateCategoryValidator implements Validator {
+@Component("beforeSaveCategoryValidator")
+public class BeforeSaveCategoryValidator implements Validator {
 
 	@Autowired
 	private CategoryService categoryService;
@@ -23,13 +23,8 @@ public class BeforeCreateCategoryValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		Category category = (Category) target;
-		categoryService.save(category);
+		categoryService.update(category);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "field.required");
-
-		categoryService.findAllWithTrashed().forEach(s -> {
-			if (s.getName().equals(category.getName()))
-				errors.rejectValue("name", "already.registred");
-		});
 
 	}
 
