@@ -17,7 +17,7 @@ public class UploadController {
 	@Autowired
 	private UploadFileService uploadFileService;
 
-	@PostMapping("/upload")
+	@PostMapping("/upload/cover")
 	public ResponseEntity<?> upload(@RequestAttribute("file") MultipartFile file) {
 		URI upload = this.uploadFileService.upload(file);
 		return ResponseEntity.created(upload).build();

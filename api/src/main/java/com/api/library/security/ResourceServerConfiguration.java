@@ -27,6 +27,15 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .clearAuthentication(true)
                 .and().authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/users").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/books").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/authors").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/categories").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT,"/books/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT,"/authors/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT,"/categories/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PATCH,"/books/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PATCH,"/authors/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PATCH,"/categories/**").hasRole("ADMIN")
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated();
     }
