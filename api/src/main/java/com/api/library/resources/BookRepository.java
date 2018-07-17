@@ -11,7 +11,7 @@ import com.api.library.models.Book;
 @RepositoryRestResource(path = "books", collectionResourceRel = "books")
 public interface BookRepository extends JpaRepository<Book, Long>{
 
-	Book findByTitle(String title);
+	List<Book> findAllByTitleContaining(String title);
 
 	List<Book> findByDeletedAt(Calendar deletedAt);
 	
