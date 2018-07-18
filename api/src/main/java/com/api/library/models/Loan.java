@@ -43,5 +43,13 @@ public class Loan {
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonProperty(access = Access.READ_ONLY)
 	private Calendar createdAt;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonProperty(access = Access.READ_ONLY)
+	private Calendar updatedAt;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonProperty(access = Access.READ_ONLY)
+	private Calendar deletedAt;
 
 }
