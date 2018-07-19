@@ -7,13 +7,17 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.api.library.models.Loan;
+import com.api.library.services.BookService;
 import com.api.library.services.LoanService;
 
 @Component("beforeCreateLoanValidator")
 public class BeforeCreateLoanValidator implements Validator {
-	
+
 	@Autowired
 	private LoanService loanService;
+
+	@Autowired
+	private BookService bookService;
 
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -29,7 +33,14 @@ public class BeforeCreateLoanValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "devolutionIn", "field.required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "activated", "field.required");
 
-		loanService.save(loan);
+		if (!errors.hasErrors()) {
+			boolean reserved = this.bookService.reserve(loan.getBook());
+
+			if (!reserved)
+				errors.rejectValue("book.units", "not.available");
+
+			loanService.save(loan);
+		}
 	}
 
 }
