@@ -8,4 +8,6 @@ public interface BookService extends DefaultService<Book, Long> {
 
 	List<Book> findByTitle(String title);
 
+	boolean reserve(Book book);
+
 }

@@ -59,4 +59,15 @@ public class BookServiceImpl implements BookService {
 		this.update(book);
 	}
 
+	@Override
+	public boolean reserve(Book book) {
+		if (book.getUnits() < 1)
+			return false;
+
+		book.setUnits(book.getUnits() - 1);
+		this.update(book);
+
+		return true;
+	}
+
 }
