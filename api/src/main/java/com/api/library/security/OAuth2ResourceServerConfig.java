@@ -19,7 +19,7 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
 	
     @Override
     public void configure(ResourceServerSecurityConfigurer config) {
-        config.tokenServices(tokenServices());
+        config.tokenServices(tokenServices()).resourceId("restservice");
     }
  
     @Bean
@@ -31,6 +31,7 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         converter.setSigningKey("123");
+        converter.setVerifierKey("123");
         return converter;
     }
  
