@@ -16,32 +16,32 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @Configuration
 @EnableResourceServer
 public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter {
-	
-    @Override
-    public void configure(ResourceServerSecurityConfigurer config) {
-        config.tokenServices(tokenServices()).resourceId("restservice");
-    }
- 
-    @Bean
-    public TokenStore tokenStore() {
-        return new JwtTokenStore(accessTokenConverter());
-    }
- 
-    @Bean
-    public JwtAccessTokenConverter accessTokenConverter() {
-        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey("123");
-        converter.setVerifierKey("123");
-        return converter;
-    }
- 
-    @Bean
-    @Primary
-    public DefaultTokenServices tokenServices() {
-        DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-        defaultTokenServices.setTokenStore(tokenStore());
-        return defaultTokenServices;
-    }
+
+	@Override
+	public void configure(ResourceServerSecurityConfigurer config) {
+		config.tokenServices(tokenServices()).resourceId("restservice");
+	}
+
+	@Bean
+	public TokenStore tokenStore() {
+		return new JwtTokenStore(accessTokenConverter());
+	}
+
+	@Bean
+	public JwtAccessTokenConverter accessTokenConverter() {
+		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+		converter.setSigningKey("123");
+		converter.setVerifierKey("123");
+		return converter;
+	}
+
+	@Bean
+	@Primary
+	public DefaultTokenServices tokenServices() {
+		DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
+		defaultTokenServices.setTokenStore(tokenStore());
+		return defaultTokenServices;
+	}
     
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -51,15 +51,9 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
                 .clearAuthentication(true)
                 .and().authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/users").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST,"/books").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST,"/authors").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST,"/categories").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT,"/books/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT,"/authors/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT,"/categories/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PATCH,"/books/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PATCH,"/authors/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PATCH,"/categories/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/authors", "/books", "/categories").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/books/**", "/authors/**", "/categories/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PATCH,"/books/**", "/authors/**", "/categories/**").hasRole("ADMIN")
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated();
     }

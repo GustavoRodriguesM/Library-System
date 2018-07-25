@@ -23,10 +23,8 @@ public class UserDetailService implements UserDetailsService {
 
 		if (user == null) 
 			throw new UsernameNotFoundException("User " + username + " can't be found!");
-		
-
+	
 		return new LibraryUserDetails(user);
-
 	}
 
 }
