@@ -8,6 +8,8 @@ public interface UserService extends DefaultService<User, Long> {
 
 	User findByToken(String token);
 	
+	Boolean checkEmailTaken(String email);
+	
 	void encodePasswordAndToken(User user);
 
 }

@@ -79,4 +79,11 @@ public class UserServiceImpl implements UserService {
 		user.setPasswordDigest(encoder.encode(user.getPassword()));
 	}
 
+	@Override
+	public Boolean checkEmailTaken(String email) {
+		if(this.findByEmail(email) == null)
+			return false;
+		return true;
+	}
+
 }
