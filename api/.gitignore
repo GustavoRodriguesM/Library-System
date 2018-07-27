@@ -2,4 +2,6 @@
 .classpath
 .settings
 .project
-
+*.jpg
+*.jpeg
+*.png
