@@ -54,6 +54,7 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
                 .antMatchers(HttpMethod.POST,"/authors", "/books", "/categories").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/books/**", "/authors/**", "/categories/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PATCH,"/books/**", "/authors/**", "/categories/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated();
     }

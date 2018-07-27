@@ -27,12 +27,10 @@ public class UserServiceImpl implements UserService {
 		user.setUpdatedAt(Calendar.getInstance());
 
 		encodePasswordAndToken(user);
-
 	}
 
 	@Override
 	public void update(User user) {
-		encodePasswordAndToken(user);
 		user.setUpdatedAt(Calendar.getInstance());
 	}
 
