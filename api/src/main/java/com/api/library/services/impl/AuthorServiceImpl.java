@@ -25,6 +25,7 @@ public class AuthorServiceImpl implements AuthorService {
 	@Override
 	public void update(Author author) {
 		author.setUpdatedAt(Calendar.getInstance());
+		this.authorRepository.save(author);
 	}
 
 	@Override

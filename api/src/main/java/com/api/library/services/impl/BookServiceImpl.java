@@ -25,6 +25,7 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public void update(Book book) {
 		book.setUpdatedAt(Calendar.getInstance());
+		this.bookRepository.save(book);
 	}
 
 	@Override

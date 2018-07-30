@@ -25,6 +25,7 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public void update(Category category) {
 		category.setUpdatedAt(Calendar.getInstance());
+		this.categoryRepository.save(category);
 	}
 	
 	@Override

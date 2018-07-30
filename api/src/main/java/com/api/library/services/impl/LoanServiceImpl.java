@@ -26,6 +26,7 @@ public class LoanServiceImpl implements LoanService {
 	@Override
 	public void update(Loan loan) {
 		loan.setUpdatedAt(Calendar.getInstance());
+		this.loanRepository.save(loan);
 	}
 
 	@Override
