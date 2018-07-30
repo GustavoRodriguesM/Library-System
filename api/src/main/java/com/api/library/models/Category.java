@@ -9,6 +9,7 @@ import javax.persistence.Id;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -19,6 +20,7 @@ import lombok.Setter;
 @Entity(name = "categories")
 @Getter
 @Setter
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @NoArgsConstructor
 public class Category {
 

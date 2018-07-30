@@ -5,6 +5,8 @@ import javax.persistence.Id;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +14,7 @@ import lombok.Setter;
 @Entity(name = "roles")
 @Getter
 @Setter
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 @NoArgsConstructor
 public class Role implements GrantedAuthority {
 
