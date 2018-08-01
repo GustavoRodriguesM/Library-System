@@ -12,8 +12,10 @@ public class CustomTokenEnhancer implements TokenEnhancer {
 	@Override
 	public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
 		Map<String, Object> additionalInfo = new HashMap<>();
+		
+		LibraryUserDetails user = (LibraryUserDetails) authentication.getPrincipal();
+		additionalInfo.put("name", user.getName());
 		((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
-		//TODO: Try add name of user
 		return accessToken;
 	}
 }
