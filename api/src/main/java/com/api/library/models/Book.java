@@ -60,5 +60,11 @@ public class Book {
 	@DateTimeFormat
 	@JsonProperty(access = Access.READ_ONLY)
 	private Calendar deletedAt;
+	
+	@Override
+	public boolean equals(Object obj) {
+		Book another = (Book) obj;
+		return this.isbn.equals(another.getIsbn()) && this.title.equals(another.getTitle());
+	}
 
 }
