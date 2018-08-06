@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.api.library.models.Role;
 import com.api.library.models.User;
 import com.api.library.resources.UserRepository;
 import com.api.library.services.UserService;
@@ -71,7 +72,7 @@ public class UserServiceImpl implements UserService {
 	public User findByToken(String token) {
 		return this.userRepository.findByToken(token);
 	}
-	
+
 	@Override
 	public void encodePasswordAndToken(User user) {
 		user.setToken(HashGenerator.md5(user.getEmail() + user.getName().hashCode()));
@@ -80,9 +81,19 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Boolean checkEmailTaken(String email) {
-		if(this.findByEmail(email) == null)
+		if (this.findByEmail(email) == null)
 			return false;
 		return true;
+	}
+
+	@Override
+	public boolean hasRole(User user, String role) {
+		boolean has = false;
+		for (Role r : user.getRoles())
+			if (r.getName().equals(role))
+				has = true;
+
+		return has;
 	}
 
 }

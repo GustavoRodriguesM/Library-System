@@ -12,4 +12,6 @@ public interface UserService extends DefaultService<User, Long> {
 	
 	void encodePasswordAndToken(User user);
 
+	boolean hasRole(User user, String string);
+
 }
