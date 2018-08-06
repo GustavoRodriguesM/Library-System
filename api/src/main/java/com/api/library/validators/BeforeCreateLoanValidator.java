@@ -30,8 +30,6 @@ public class BeforeCreateLoanValidator implements Validator {
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "book", "field.required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "client", "field.required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "devolutionIn", "field.required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "activated", "field.required");
 
 		if (!errors.hasErrors()) {
 			boolean reserved = this.bookService.reserve(loan.getBook());

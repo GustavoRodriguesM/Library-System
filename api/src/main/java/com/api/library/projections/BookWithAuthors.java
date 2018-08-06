@@ -10,6 +10,8 @@ import com.api.library.models.Book;
 @Projection(name = "bookWithAuthors", types =  Book.class ) 
 public interface BookWithAuthors {
 
+	Long getId();
+	
 	String getTitle();
 	
 	String getDescription();

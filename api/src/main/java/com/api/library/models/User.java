@@ -71,6 +71,7 @@ public class User {
 	private Calendar deletedAt;
 
 	public User(User user) {
+		this.id = user.getId();
 		this.name = user.getName();
 		this.email = user.getEmail();
 		this.roles = user.getRoles();

@@ -1,6 +1,7 @@
 package com.api.library.services.impl;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import com.api.library.services.LoanService;
 
 @Service
 public class LoanServiceImpl implements LoanService {
-	
+
 	@Autowired
 	private LoanRepository loanRepository;
 
@@ -20,6 +21,7 @@ public class LoanServiceImpl implements LoanService {
 	public void save(Loan loan) {
 		loan.setCreatedAt(Calendar.getInstance());
 		loan.setUpdatedAt(Calendar.getInstance());
+		addSevenDays(loan);
 		loan.setActivated(true);
 	}
 
@@ -54,6 +56,13 @@ public class LoanServiceImpl implements LoanService {
 	public void enable(Loan loan) {
 		loan.setDeletedAt(null);
 		this.update(loan);
+	}
+	
+	private void addSevenDays(Loan loan) {
+		Calendar devolution = new GregorianCalendar();
+		devolution.setTime(Calendar.getInstance().getTime());
+		devolution.add(Calendar.DATE, 7);
+		loan.setDevolutionIn(devolution);
 	}
 
 }
