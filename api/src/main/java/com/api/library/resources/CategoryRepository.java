@@ -8,7 +8,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.api.library.models.Category;
 
-@RepositoryRestResource(path = "categories", collectionResourceRel = "categories")
+@RepositoryRestResource(path = "categories", collectionResourceRel = "content")
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
 	List<Category> findAllByDeletedAt(Calendar deletedAt);

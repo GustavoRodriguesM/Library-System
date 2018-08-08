@@ -8,7 +8,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.api.library.models.Author;
 
-@RepositoryRestResource(path = "authors", collectionResourceRel = "authors")
+@RepositoryRestResource(path = "authors", collectionResourceRel = "content")
 public interface AuthorRepository extends JpaRepository<Author, Long> {
 
 	Author findByName(String name);

@@ -8,7 +8,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.api.library.models.Loan;
 
-@RepositoryRestResource(path = "loans", collectionResourceRel = "loans")
+@RepositoryRestResource(path = "loans", collectionResourceRel = "content")
 public interface LoanRepository extends JpaRepository<Loan, Long>{
 
 	List<Loan> findAllByDeletedAt(Calendar deletedAt);
