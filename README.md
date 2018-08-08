@@ -9,12 +9,9 @@ For complementing, [Library Client](https://github.com/GustavoRodriguesM/library
 
 > To run this project you will need the complementary project [Library Client](https://github.com/GustavoRodriguesM/library-client-angular) and have the following technologies installed:
 
-Angular CLI: 6.0.8<br/>
-Node: 10.6.0<br/>
-Angular: 6.0.9<br/>
-Rxjs: 6.2.2<br/>
-Typescript: 2.7.2<br/>
-Webpack: 4.8.3<br/>
+JAVA 8 + <br/>
+MAVEN <br/>
 
- After that, you just need to use<br/>
->$ ng serve --open
+ After that, you just need to go into the project folder and use<br/>
+>$ mvn spring-boot:run
+
