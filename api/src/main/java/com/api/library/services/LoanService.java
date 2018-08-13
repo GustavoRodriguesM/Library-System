@@ -4,4 +4,6 @@ import com.api.library.models.Loan;
 
 public interface LoanService extends DefaultService<Loan, Long>{
 
+	void remand(Loan loan);
+
 }

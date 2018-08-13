@@ -25,7 +25,7 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public void update(Book book) {
 		book.setUpdatedAt(Calendar.getInstance());
-		this.bookRepository.save(book);
+
 	}
 
 	@Override
@@ -69,6 +69,13 @@ public class BookServiceImpl implements BookService {
 		this.update(book);
 
 		return true;
+	}
+
+	@Override
+	public void remand(Book book) {
+		book.setUnits(book.getUnits() + 1);
+		this.update(book);
+		this.bookRepository.save(book);
 	}
 
 }

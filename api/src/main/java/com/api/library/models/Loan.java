@@ -40,7 +40,7 @@ public class Loan {
 	@DateTimeFormat
 	private Calendar devolutionIn;
 
-	private boolean activated;
+	private Boolean activated;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonProperty(access = Access.READ_ONLY)

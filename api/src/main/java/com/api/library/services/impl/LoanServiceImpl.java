@@ -9,10 +9,14 @@ import org.springframework.stereotype.Service;
 
 import com.api.library.models.Loan;
 import com.api.library.resources.LoanRepository;
+import com.api.library.services.BookService;
 import com.api.library.services.LoanService;
 
 @Service
 public class LoanServiceImpl implements LoanService {
+
+	@Autowired
+	private BookService bookService;
 
 	@Autowired
 	private LoanRepository loanRepository;
@@ -57,12 +61,20 @@ public class LoanServiceImpl implements LoanService {
 		loan.setDeletedAt(null);
 		this.update(loan);
 	}
-	
+
 	private void addSevenDays(Loan loan) {
 		Calendar devolution = new GregorianCalendar();
 		devolution.setTime(Calendar.getInstance().getTime());
 		devolution.add(Calendar.DATE, 7);
 		loan.setDevolutionIn(devolution);
+	}
+
+	@Override
+	public void remand(Loan loan) {
+		if (loan.getActivated()) {
+			loan.setActivated(false);
+			this.bookService.remand(loan.getBook());
+		}
 	}
 
 }

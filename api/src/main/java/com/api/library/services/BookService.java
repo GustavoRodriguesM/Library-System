@@ -10,4 +10,6 @@ public interface BookService extends DefaultService<Book, Long> {
 
 	boolean reserve(Book book);
 
+	void remand(Book book);
+
 }
